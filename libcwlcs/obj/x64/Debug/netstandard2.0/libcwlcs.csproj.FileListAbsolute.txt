@@ -1,0 +1,8 @@
+C:\Users\chrissx\source\repos\CWishlist\libcwlcs\bin\x64\Debug\netstandard2.0\libcwlcs.deps.json
+C:\Users\chrissx\source\repos\CWishlist\libcwlcs\bin\x64\Debug\netstandard2.0\libcwlcs.dll
+C:\Users\chrissx\source\repos\CWishlist\libcwlcs\bin\x64\Debug\netstandard2.0\libcwlcs.pdb
+C:\Users\chrissx\source\repos\CWishlist\libcwlcs\obj\x64\Debug\netstandard2.0\libcwlcs.csproj.CoreCompileInputs.cache
+C:\Users\chrissx\source\repos\CWishlist\libcwlcs\obj\x64\Debug\netstandard2.0\libcwlcs.AssemblyInfoInputs.cache
+C:\Users\chrissx\source\repos\CWishlist\libcwlcs\obj\x64\Debug\netstandard2.0\libcwlcs.AssemblyInfo.cs
+C:\Users\chrissx\source\repos\CWishlist\libcwlcs\obj\x64\Debug\netstandard2.0\libcwlcs.dll
+C:\Users\chrissx\source\repos\CWishlist\libcwlcs\obj\x64\Debug\netstandard2.0\libcwlcs.pdb
