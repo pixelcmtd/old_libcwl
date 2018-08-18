@@ -132,6 +132,16 @@ namespace libcwlcs
         {
             l.AddRange(ts);
         }
+
+        public static bool arrequ<T>(T[] arr1, T[] arr2)
+        {
+            if (arr1.LongLength != arr2.LongLength)
+                return false;
+            for (long i = 0; i < arr1.LongLength; i++)
+                if (!arr1[i].Equals(arr2[i]))
+                    return false;
+            return true;
+        }
     }
 
     class Enumerable<T> : IEnumerable<T>

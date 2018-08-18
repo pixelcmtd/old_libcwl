@@ -6,7 +6,10 @@ Licensed to everybody under the terms of the GNU GPL v3, which you should
 have obtained this software with.
 */
 
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
 using System.Text;
 
 namespace libcwlcs
@@ -69,16 +72,31 @@ namespace libcwlcs
             get => LongLength * 2;
         }
 
-        public byte[] bytes()
+        public void write_bytes(Stream s, string format)
         {
-            List<byte> b = new List<byte>();
-            b.AddRange(Encoding.Unicode.GetBytes(name));
-            b.Add(10);
-            b.Add(13);
-            b.AddRange(Encoding.Unicode.GetBytes(url));
-            b.Add(10);
-            b.Add(13);
-            return b.ToArray();
+            if (format == "D1")
+            {
+                s.write(Encoding.Unicode.GetBytes(name));
+                s.write(10, 13);
+                s.write(Encoding.Unicode.GetBytes(url));
+                s.write(10, 13);
+            }
+            else if (format == "D2")
+            {
+                s.write(Encoding.Unicode.GetBytes(name));
+                s.write(11);
+                if (url.StartsWith("http://tinyurl.com/"))
+                {
+                    s.write(1);
+                    s.write(Encoding.ASCII.GetBytes(url.Substring(19)));
+                }
+                else
+                {
+                    s.write(0);
+                    s.write(Encoding.Unicode.GetBytes(url));
+                }
+                s.write(11);
+            }
         }
     }
 }

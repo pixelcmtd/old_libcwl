@@ -182,11 +182,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chrissx\\source\\repos\\CWishlist\\libcwlcs\\libcwlcs.csproj",
+      "projectUniqueName": "C:\\Users\\chrissx\\source\\repos\\libcwl\\libcwlcs\\libcwlcs.csproj",
       "projectName": "libcwlcs",
-      "projectPath": "C:\\Users\\chrissx\\source\\repos\\CWishlist\\libcwlcs\\libcwlcs.csproj",
+      "projectPath": "C:\\Users\\chrissx\\source\\repos\\libcwl\\libcwlcs\\libcwlcs.csproj",
       "packagesPath": "C:\\Users\\chrissx\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chrissx\\source\\repos\\CWishlist\\libcwlcs\\obj\\",
+      "outputPath": "C:\\Users\\chrissx\\source\\repos\\libcwl\\libcwlcs\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
