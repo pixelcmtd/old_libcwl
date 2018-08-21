@@ -21,4 +21,9 @@ public class InternalConstsNUtils {
 	{
 		return leunicodedec.decode(ByteBuffer.wrap(new byte[] {one, two})).array()[0];
 	}
+	
+	public static char ascii(byte b) throws CharacterCodingException
+	{
+		return asciidec.decode(ByteBuffer.wrap(new byte[] {b})).array()[0];
+	}
 }

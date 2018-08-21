@@ -4,10 +4,17 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.DeflaterInputStream;
 import java.util.zip.DeflaterOutputStream;
+import java.util.zip.ZipFile;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
 
 public class IO {
 
@@ -130,6 +137,10 @@ public class IO {
 	
 	public static WL loadCwlu(File f)
 	{
-		
+		ZipFile zip = new ZipFile(f);
+		//check F and V
+		InputStreamReader isr = new InputStreamReader(zip.getInputStream(zip.getEntry("W")), StandardCharsets.UTF_16LE);
+		Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(isr); //fix
+		//read cwlu
 	}
 }
