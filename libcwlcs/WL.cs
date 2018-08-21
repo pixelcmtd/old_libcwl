@@ -65,9 +65,11 @@ namespace libcwlcs
         {
             unchecked
             {
-                int hc = 0;
-                foreach (Item i in items)
-                    hc += i.GetHashCode();
+                if(items.LongLength == 0)
+                    return 0;
+                int hc = items[0].GetHashCode();
+                for(long i = 1; i < items.LongLength; i++)
+                    hc *= items[i].GetHashCode();
                 return hc;
             }
         }
