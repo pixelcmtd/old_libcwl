@@ -9,6 +9,11 @@ public class Item {
 
 	public String name, url;
 	
+	public Item()
+	{
+		name = url = "";
+	}
+	
 	public Item(String name, String url)
 	{
 		this.name = name;
@@ -67,26 +72,26 @@ public class Item {
 	{
 		if(format == "D1")
 		{
-			s.write(InternalConsts.unicode.encode(CharBuffer.wrap(name.toCharArray())).array());
-			s.write(InternalConsts.d1_separator);
-			s.write(InternalConsts.unicode.encode(CharBuffer.wrap(url.toCharArray())).array());
-			s.write(InternalConsts.d1_separator);
+			s.write(InternalConstsNUtils.leunicodeenc.encode(CharBuffer.wrap(name.toCharArray())).array());
+			s.write(InternalConstsNUtils.d1_separator);
+			s.write(InternalConstsNUtils.leunicodeenc.encode(CharBuffer.wrap(url.toCharArray())).array());
+			s.write(InternalConstsNUtils.d1_separator);
 		}
 		else if(format == "D2")
 		{
-			s.write(InternalConsts.unicode.encode(CharBuffer.wrap(name.toCharArray())).array());
-			s.write(InternalConsts.d2_separator);
+			s.write(InternalConstsNUtils.leunicodeenc.encode(CharBuffer.wrap(name.toCharArray())).array());
+			s.write(InternalConstsNUtils.d2_separator);
 			if(url.startsWith("http://tinyurl.com/"))
 			{
-				s.write(InternalConsts.d2_is_tu);
-				s.write(InternalConsts.ascii.encode(CharBuffer.wrap(url.substring(19))).array());
+				s.write(InternalConstsNUtils.d2_is_tu);
+				s.write(InternalConstsNUtils.asciienc.encode(CharBuffer.wrap(url.substring(19))).array());
 			}
 			else
 			{
-				s.write(InternalConsts.d2_is_no_tu);
-				s.write(InternalConsts.unicode.encode(CharBuffer.wrap(url.toCharArray())).array());
+				s.write(InternalConstsNUtils.d2_is_no_tu);
+				s.write(InternalConstsNUtils.leunicodeenc.encode(CharBuffer.wrap(url.toCharArray())).array());
 			}
-			s.write(InternalConsts.d2_separator);
+			s.write(InternalConstsNUtils.d2_separator);
 		}
 	}
 }

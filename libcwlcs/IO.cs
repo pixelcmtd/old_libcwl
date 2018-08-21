@@ -168,7 +168,7 @@ namespace libcwlcs
                         cs = false;
                     }
                 }
-
+                d.Close();
                 return new WL(itms);
             }
         }
