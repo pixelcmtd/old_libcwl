@@ -26,4 +26,14 @@ public class InternalConstsNUtils {
 	{
 		return asciidec.decode(ByteBuffer.wrap(new byte[] {b})).array()[0];
 	}
+	
+	public static String leunicode(byte[] b) throws CharacterCodingException
+	{
+		return leunicodedec.decode(ByteBuffer.wrap(b)).toString();
+	}
+	
+	public static String ascii(byte[] b) throws CharacterCodingException
+	{
+		return asciidec.decode(ByteBuffer.wrap(b)).toString();
+	}
 }

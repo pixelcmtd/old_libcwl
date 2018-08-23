@@ -4,17 +4,33 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
+import java.util.Spliterator;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.function.ToIntFunction;
+import java.util.function.ToLongFunction;
+import java.util.stream.Collector;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 import java.util.zip.DeflaterInputStream;
 import java.util.zip.DeflaterOutputStream;
+import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
 
 public class IO {
 
@@ -135,12 +151,41 @@ public class IO {
 		}
 	}
 	
-	public static WL loadCwlu(File f)
+	public static WL loadCwlu(File f) throws IOException
 	{
 		ZipFile zip = new ZipFile(f);
-		//check F and V
-		InputStreamReader isr = new InputStreamReader(zip.getInputStream(zip.getEntry("W")), StandardCharsets.UTF_16LE);
-		Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(isr); //fix
-		//read cwlu
+		if(readSingleByteEntry(zip, "F") != 3)
+			throw new IOException("The file format is not 3, so you tried to load a .cwlu file that isn't actually a file encoded in the CWLU format.");
+		if(readSingleByteEntry(zip, "V") != 1)
+			throw new IOException("The format version is not 1, there is no other CWLU than CWLUv1, so this appears to be broken.");
+		List<Item> items = new ArrayList<Item>();
+		String xml = InternalConstsNUtils.leunicode(readEntry(zip, "W"));
+		for(String tag : xml.replaceAll("\r", "").replaceAll("\n", "").split("<"))
+		{
+			
+			if(tag.split(" ")[0] != "i")
+				continue;
+			String rawArgs = tag.substring(2);
+		}
+		return new WL(items);
+	}
+	
+	static byte[] readEntry(ZipFile zip, String entryName) throws IOException
+	{
+		ZipEntry e = zip.getEntry(entryName);
+		InputStream is = zip.getInputStream(e);
+		byte[] b = new byte[(int) e.getSize()];
+		is.read(b);
+		is.close();
+		return b;
+	}
+	
+	static int readSingleByteEntry(ZipFile zip, String entryName) throws IOException
+	{
+		ZipEntry e = zip.getEntry(entryName);
+		InputStream is = zip.getInputStream(e);
+		int i = is.read();
+		is.close();
+		return i;
 	}
 }
