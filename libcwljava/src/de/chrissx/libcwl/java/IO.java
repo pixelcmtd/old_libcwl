@@ -6,33 +6,24 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
-import java.util.Spliterator;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import java.util.function.ToIntFunction;
-import java.util.function.ToLongFunction;
-import java.util.stream.Collector;
-import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
 import java.util.zip.DeflaterInputStream;
 import java.util.zip.DeflaterOutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 public class IO {
+
+	public static WL read(File f) throws IOException
+	{
+		String s = f.toString().toLowerCase();
+		if(s.endsWith(".cwlu"))
+			return readCwlu(f);
+		else if(s.endsWith(".cwld"))
+			return readCwld(f);
+		else
+			throw new IOException("Only CWLU and CWLD loading are supported at the moment.");
+	}
 
 	public static void writeCwld(WL wl, File f) throws IOException
 	{
@@ -48,7 +39,7 @@ public class IO {
 			i.writeBytes(d, "D2");
 		d.close();
 	}
-	
+
 	public static WL readCwld(File f) throws IOException
 	{
 		FileInputStream s = new FileInputStream(f);
@@ -159,21 +150,41 @@ public class IO {
 		if(readSingleByteEntry(zip, "V") != 1)
 			throw new IOException("The format version is not 1, but there is no other CWLU than CWLUv1, so this appears to be broken.");
 		List<Item> items = new ArrayList<Item>();
-		String xml = InternalConstsNUtils.leunicode(readEntry(zip, "W"));
-		for(String tag : xml.replaceAll("\r", "").replaceAll("\n", "").split("<"))
+		for(String tag : InternalConstsNUtils.leunicode(readEntry(zip, "W")).replaceAll("\r", "").replaceAll("\n", "")
+				.replaceAll("/>", "").replaceAll(">", "").replaceAll("n=", "n").replaceAll("u=", "u").split("<"))
 		{
 			if(tag.charAt(0) != 'i')
 				continue;
 			CharStream s = new CharStream(tag);
-			StringBuilder b = new StringBuilder();
-			Item i = new Item();
-			int j = -1;
-			boolean st = false;
+			StringBuilder b = new StringBuilder(); //used to build name and url
+			Item i = new Item(); //the item we're reading
+			boolean nu = false; //name url
+			boolean is = false; //in string
 			while(s.isOpen())
 			{
 				char c = s.read();
-				
+				if(is)
+				{
+					if(c != '"')
+						b.append(c);
+					else if(c == '"')
+					{
+						if(nu)
+							i.name = b.toString();
+						else
+							i.url = b.toString();
+						is = false;
+						b = new StringBuilder();
+					}
+				}
+				else if(c == 'n')
+					nu = true;
+				else if(c == 'u')
+					nu = false;
+				else if(c == '"')
+					is = true;
 			}
+			items.add(i);
 		}
 		return new WL(items);
 	}
