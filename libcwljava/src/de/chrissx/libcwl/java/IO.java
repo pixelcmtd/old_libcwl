@@ -151,21 +151,29 @@ public class IO {
 		}
 	}
 	
-	public static WL loadCwlu(File f) throws IOException
+	public static WL readCwlu(File f) throws IOException
 	{
 		ZipFile zip = new ZipFile(f);
 		if(readSingleByteEntry(zip, "F") != 3)
 			throw new IOException("The file format is not 3, so you tried to load a .cwlu file that isn't actually a file encoded in the CWLU format.");
 		if(readSingleByteEntry(zip, "V") != 1)
-			throw new IOException("The format version is not 1, there is no other CWLU than CWLUv1, so this appears to be broken.");
+			throw new IOException("The format version is not 1, but there is no other CWLU than CWLUv1, so this appears to be broken.");
 		List<Item> items = new ArrayList<Item>();
 		String xml = InternalConstsNUtils.leunicode(readEntry(zip, "W"));
 		for(String tag : xml.replaceAll("\r", "").replaceAll("\n", "").split("<"))
 		{
-			
-			if(tag.split(" ")[0] != "i")
+			if(tag.charAt(0) != 'i')
 				continue;
-			String rawArgs = tag.substring(2);
+			CharStream s = new CharStream(tag);
+			StringBuilder b = new StringBuilder();
+			Item i = new Item();
+			int j = -1;
+			boolean st = false;
+			while(s.isOpen())
+			{
+				char c = s.read();
+				
+			}
 		}
 		return new WL(items);
 	}
