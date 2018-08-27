@@ -150,10 +150,17 @@ public class IO {
 		if(readSingleByteEntry(zip, "V") != 1)
 			throw new IOException("The format version is not 1, but there is no other CWLU than CWLUv1, so this appears to be broken.");
 		List<Item> items = new ArrayList<Item>();
-		for(String tag : InternalConstsNUtils.leunicode(readEntry(zip, "W")).replaceAll("\r", "").replaceAll("\n", "")
-				.replaceAll("/>", "").replaceAll(">", "").replaceAll("n=", "n").replaceAll("u=", "u").split("<"))
+		parseXml(InternalConstsNUtils.leunicode(readEntry(zip, "W")), "i", "n", "u");
+		return new WL(items);
+	}
+	
+	static List<Item> parseXml(String xml, String itemTag, String nameAttribute, String urlAttribute)
+	{
+		List<Item> items = new ArrayList<Item>();
+		for(String tag : xml.replaceAll("\r", "").replaceAll("\n", "").replaceAll("/>", "").replaceAll(">", "")
+				.replaceAll(nameAttribute + "=", nameAttribute).replaceAll(urlAttribute + "=", urlAttribute).split("<"))
 		{
-			if(tag.charAt(0) != 'i')
+			if(!tag.startsWith(itemTag))
 				continue;
 			CharStream s = new CharStream(tag);
 			StringBuilder b = new StringBuilder(); //used to build name and url
@@ -186,7 +193,7 @@ public class IO {
 			}
 			items.add(i);
 		}
-		return new WL(items);
+		return items;
 	}
 	
 	static byte[] readEntry(ZipFile zip, String entryName) throws IOException
