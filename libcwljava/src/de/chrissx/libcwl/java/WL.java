@@ -12,20 +12,20 @@ public class WL implements Iterable<Item> {
 	{
 		this.items = Arrays.asList(items);
 	}
-	
+
 	public WL(List<Item> items)
 	{
 		this.items = items;
 	}
 	
 	public List<Item> items;
-	
+
 	@Override
 	public boolean equals(Object o)
 	{
 		return o instanceof WL ? equals((WL)o) : false;
 	}
-	
+
 	public boolean equals(WL wl)
 	{
 		if(wl.length() != length())
@@ -35,17 +35,17 @@ public class WL implements Iterable<Item> {
 				return false;
 		return true;
 	}
-	
+
 	public int length()
 	{
 		return items.size();
 	}
-	
+
 	public Item get(int idx)
 	{
 		return items.get(idx);
 	}
-	
+
 	@Override
 	public int hashCode()
 	{
@@ -54,7 +54,7 @@ public class WL implements Iterable<Item> {
 			hc *= items.get(i).hashCode();
 		return hc;
 	}
-	
+
 	public Item[] searchItems(Predicate<Item> predicate)
 	{
 		Item i = null;
@@ -64,7 +64,7 @@ public class WL implements Iterable<Item> {
 				j.add(i);
 		return j.toArray(new Item[j.size()]);
 	}
-	
+
 	public int getFirstIndex(Predicate<Item> predicate)
 	{
 		for(int i = 0; i < items.size(); i++)

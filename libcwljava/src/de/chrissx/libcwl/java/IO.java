@@ -141,7 +141,7 @@ public class IO {
 			return new WL(li);
 		}
 	}
-	
+
 	public static WL readCwlu(File f) throws IOException
 	{
 		ZipFile zip = new ZipFile(f);
@@ -153,7 +153,7 @@ public class IO {
 		parseXml(InternalConstsNUtils.leunicode(readEntry(zip, "W")), "i", "n", "u");
 		return new WL(items);
 	}
-	
+
 	static List<Item> parseXml(String xml, String itemTag, String nameAttribute, String urlAttribute)
 	{
 		List<Item> items = new ArrayList<Item>();
@@ -177,9 +177,9 @@ public class IO {
 					else if(c == '"')
 					{
 						if(nu)
-							i.name = b.toString();
+							i.name = xmlReverseEscape(b.toString());
 						else
-							i.url = b.toString();
+							i.url = xmlReverseEscape(b.toString());
 						is = false;
 						b = new StringBuilder();
 					}
@@ -195,8 +195,8 @@ public class IO {
 		}
 		return items;
 	}
-	
-	static byte[] readEntry(ZipFile zip, String entryName) throws IOException
+
+	public static byte[] readEntry(ZipFile zip, String entryName) throws IOException
 	{
 		ZipEntry e = zip.getEntry(entryName);
 		InputStream is = zip.getInputStream(e);
@@ -205,13 +205,25 @@ public class IO {
 		is.close();
 		return b;
 	}
-	
-	static int readSingleByteEntry(ZipFile zip, String entryName) throws IOException
+
+	public static int readSingleByteEntry(ZipFile zip, String entryName) throws IOException
 	{
 		ZipEntry e = zip.getEntry(entryName);
 		InputStream is = zip.getInputStream(e);
 		int i = is.read();
 		is.close();
 		return i;
+	}
+
+	static String xmlReverseEscape(String s)
+	{
+		return s.replaceAll("&quot;", "\"").replaceAll("&apos;", "'").replaceAll("&lt;", "<")
+				.replaceAll("&rt;", ">").replaceAll("&amp;", "&");
+	}
+
+	static String xmlEscape(String s)
+	{
+		return s.replaceAll("&amp;", "&").replaceAll("&quot;", "\"").replaceAll("&apos;", "'")
+				.replaceAll("&lt;", "<").replaceAll("&rt;", ">");
 	}
 }
