@@ -7,6 +7,7 @@ have obtained this software with.
 
 This piece of software uses the library "libdeflate" by Eric Biggers.
 Here you can see a section from its "COPYING"/license agreement:
+
 ***BEGIN OF COPYING***
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation files
@@ -19,10 +20,6 @@ subject to the following conditions:
 The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
 ***END OF COPYING***
-
-This piece of software uses the library "Xerces-C++" by Apache.
-It is licensed under the Apache License 2.0, which is available at
-http://www.apache.org/licenses/LICENSE-2.0.html.
 */
 
 #pragma once
@@ -38,7 +35,8 @@ http://www.apache.org/licenses/LICENSE-2.0.html.
 
 using namespace std;
 
-//if bool is not supported by your compiler change this to int
+//bool is ansi c++, but if you are using internet explorer to compile you
+//might want to change this
 typedef bool bool_t;
 
 namespace libcwlcpp
@@ -86,6 +84,8 @@ namespace libcwlcpp
 
 	namespace io
 	{
+		uint8_t last_exception = 0;
+
 		uint8_t cwld_header[8] = { 67, 87, 76, 68, 13, 10, 26, 10 }; //C W L D CR LF EOF LF
 
 		wl load_cwl(char *file);
