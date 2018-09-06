@@ -41,46 +41,80 @@ typedef bool bool_t;
 
 namespace libcwlcpp
 {
+	//the string constant L"/[unnamed item]\\"
+	wchar_t *unnamed_item = L"/[unnamed item]\\";
+
+	//one item in a cwl
 	struct item
 	{
 	public:
+		//the name of the item (HAS to be zero-terminated)
 		wchar_t *name;
+		//the url of the item, usually a tinyurl (HAS to be zero-terminated)
 		wchar_t *url;
 
+		//constructs a new item with null name and url
 		item();
+		//constructs a new item with the given name and url
 		item(wchar_t *name, wchar_t *url);
 
+		//returns the name if name && wcslen(name), else unnamed_item
 		wchar_t *to_string();
 
+		//returns 1 if name and url are wcscmp equal, else 0
 		bool_t equals(item *itm);
+		//casts obj to an item ptr and compares with it, can lead to
+		//segmentation faults and other errors if obj is no item
 		bool_t equals(void *obj);
 
+		//returns a pretty unique checksum/hash, can be used for
+		//maps or smth like that
 		intmax_t hash_code();
 
+		//compares the items, returns 1 if they are equal, 0 if not
 		bool_t operator==(item *itm);
+		//compares the items, returns 0 if they are equal, 1 if not
 		bool_t operator!=(item *itm);
 		
+		//returns the added wcslen of the name and url
 		uint64_t length();
-		uint64_t memsize();
+		//returns length() * sizeof(wchar_t), which is a rough
+		//estimate of the size this uses in memory
+		uint64_t memlen();
 
-		uint8_t *to_bytes();
+		//returns bytes of this item encoded in the given format
+		//formats: D1, D2; soon: L1
+		uint8_t *to_bytes(char *format);
 	};
 
+	//a cwl
 	struct wl
 	{
 	public:
-		//this HAS to be zero-terminated
+		//the actual array of items (HAS to be zero-terminated)
 		item **items;
 
+		//constructs a new wl with items = null
 		wl();
+		//constructs a new wl with the given items
 		wl(item **items);
 
+		//compares the wls and returns 1 if they are and 0 if not
 		bool_t operator==(wl *wl);
+		//compares the wls and returns 0 if they are and 1 if not
 		bool_t operator!=(wl *wl);
+		//appends the wls and returns the new one
 		wl operator&(wl *wl);
+
+		//returns the number of elements in this wl
+		//(without the null at the end of items)
+		uint64_t length();
+		//sums up the byte size of the pointer array
+		//and the memlen() of the individual items
+		uint64_t memlen();
 	};
 
-	bool_t arrequ(uint8_t *one, uint8_t *two);
+	bool_t arrequ(uint8_t *arr1, uint8_t *arr2);
 
 	namespace io
 	{
