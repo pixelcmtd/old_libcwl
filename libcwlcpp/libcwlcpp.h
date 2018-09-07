@@ -114,17 +114,22 @@ namespace libcwlcpp
 		uint64_t memlen();
 	};
 
+	//Compares the two given byte arrays and returns 1 if they
+	//are equal and 0 if not
 	bool_t arrequ(uint8_t *arr1, uint8_t *arr2);
 
 	namespace io
 	{
+		//the last exception thrown by cwl io
 		uint8_t last_exception = 0;
 
-		uint8_t cwld_header[8] = { 67, 87, 76, 68, 13, 10, 26, 10 }; //C W L D CR LF EOF LF
+		//the header of cwld files
+		//(C W L D CR LF EOF LF)
+		uint8_t cwld_header[8] = { 67, 87, 76, 68, 13, 10, 26, 10 };
 
-		wl load_cwl(char *file);
-		wl load_cwlb(char *file);
-		wl load_cwlu(char *file);
-		wl load_cwld(char *file);
+		//tries to load the cwld from the file
+		//(returns 0 and saves the exception
+		//into last_exception if one occures)
+		wl *load_cwld(char *file);
 	}
 }
