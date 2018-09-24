@@ -149,9 +149,7 @@ public class IO {
 			throw new IOException("The file format is not 3, so you tried to load a .cwlu file that isn't actually a file encoded in the CWLU format.");
 		if(readSingleByteEntry(zip, "V") != 1)
 			throw new IOException("The format version is not 1, but there is no other CWLU than CWLUv1, so this appears to be broken.");
-		List<Item> items = new ArrayList<Item>();
-		parseXml(InternalConstsNUtils.leunicode(readEntry(zip, "W")), "i", "n", "u");
-		return new WL(items);
+		return new WL(parseXml(InternalConstsNUtils.leunicode(readEntry(zip, "W")), "i", "n", "u"));
 	}
 
 	static List<Item> parseXml(String xml, String itemTag, String nameAttribute, String urlAttribute)
