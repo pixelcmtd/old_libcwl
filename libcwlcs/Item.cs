@@ -33,10 +33,7 @@ namespace libcwlcs
 
         public override int GetHashCode()
         {
-            unchecked
-            {
-                return name.GetHashCode() * url.GetHashCode();
-            }
+            return unchecked(name.GetHashCode() * url.GetHashCode());
         }
 
         public static bool operator ==(Item first, Item second) => first.name == second.name && first.url == second.url;

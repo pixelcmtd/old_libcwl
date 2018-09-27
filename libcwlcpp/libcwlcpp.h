@@ -23,8 +23,7 @@ included in all copies or substantial portions of the Software.
 */
 
 #pragma once
-#define _CRT_SECURE_NO_WARNINGS
-#if defined(WIN32) && 1 //change to 0 if you want to use the static lib
+#if defined(_WIN32)
 #define LIBDEFLATE_DLL
 #endif
 #include <string>
@@ -39,10 +38,14 @@ using namespace std;
 //might want to change this
 typedef bool bool_t;
 
+typedef int ERROR_CODE;
+
 namespace libcwlcpp
 {
-	//the string constant L"/[unnamed item]\\"
-	wchar_t *unnamed_item = L"/[unnamed item]\\";
+	//the string constant "/[unnamed item]\"
+	const wchar_t *unnamed_item = L"/[unnamed item]\\";
+	//the string constant "http://tinyurl.com/"
+	const wchar_t *tinyurl = L"http://tinyurl.com/";
 
 	//one item in a cwl
 	struct item
@@ -121,7 +124,7 @@ namespace libcwlcpp
 	namespace io
 	{
 		//the last exception thrown by cwl io
-		uint8_t last_exception = 0;
+		ERROR_CODE last_exception = 0;
 
 		//the header of cwld files
 		//(C W L D CR LF EOF LF)
