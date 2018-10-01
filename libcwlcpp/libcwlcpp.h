@@ -23,71 +23,67 @@ included in all copies or substantial portions of the Software.
 */
 
 #pragma once
-#if defined(_WIN32)
+#ifdef _WIN32
 #define LIBDEFLATE_DLL
 #endif
 #include <string>
-#include <stdint.h>
 #include <wchar.h>
 #include <vector>
 #include "libdeflate.h"
 
 using namespace std;
 
-//bool is ansi c++, but if you are using internet explorer to compile you
-//might want to change this
-typedef bool bool_t;
-
-typedef int ERROR_CODE;
+typedef int error;
+typedef unsigned char byte;
+typedef unsigned long int ulong;
 
 namespace libcwlcpp
 {
-	//the string constant "/[unnamed item]\"
+	//the unnamed constant
 	const wchar_t *unnamed_item = L"/[unnamed item]\\";
-	//the string constant "http://tinyurl.com/"
+	//the tinyurl constant
 	const wchar_t *tinyurl = L"http://tinyurl.com/";
+	const wstring wnull = L"";
+	const ulong wclen = sizeof(wchar_t);
 
 	//one item in a cwl
 	struct item
 	{
 	public:
 		//the name of the item (HAS to be zero-terminated)
-		wchar_t *name;
+		wstring name;
 		//the url of the item, usually a tinyurl (HAS to be zero-terminated)
-		wchar_t *url;
+		wstring url;
 
 		//constructs a new item with null name and url
 		item();
 		//constructs a new item with the given name and url
-		item(wchar_t *name, wchar_t *url);
+		item(wstring name, wstring url);
 
-		//returns the name if name && wcslen(name), else unnamed_item
-		wchar_t *to_string();
+		//returns the name if it is set, else unnamed_item
+		const wchar_t *to_string();
 
-		//returns 1 if name and url are wcscmp equal, else 0
-		bool_t equals(item *itm);
+		//returns true if name and url are wcscmp equal, else false
+		bool equals(item &itm);
 		//casts obj to an item ptr and compares with it, can lead to
 		//segmentation faults and other errors if obj is no item
-		bool_t equals(void *obj);
+		bool equals(void *obj);
 
 		//returns a pretty unique checksum/hash, can be used for
 		//maps or smth like that
 		intmax_t hash_code();
 
 		//compares the items, returns 1 if they are equal, 0 if not
-		bool_t operator==(item *itm);
+		bool operator==(item &itm);
 		//compares the items, returns 0 if they are equal, 1 if not
-		bool_t operator!=(item *itm);
+		bool operator!=(item &itm);
 		
-		//returns the added wcslen of the name and url
-		uint64_t length();
-		//returns length() * sizeof(wchar_t), which is a rough
-		//estimate of the size this uses in memory
-		uint64_t memlen();
+		//returns the added len of the name and url
+		ulong length();
 
 		//returns bytes of this item encoded in the given format
 		//formats: D1, D2; soon: L1
-		uint8_t *to_bytes(char *format);
+		byte *to_bytes(char *format);
 	};
 
 	//a cwl
@@ -103,32 +99,29 @@ namespace libcwlcpp
 		wl(item **items);
 
 		//compares the wls and returns 1 if they are and 0 if not
-		bool_t operator==(wl *wl);
+		bool operator==(wl *wl);
 		//compares the wls and returns 0 if they are and 1 if not
-		bool_t operator!=(wl *wl);
+		bool operator!=(wl *wl);
 		//appends the wls and returns the new one
 		wl operator&(wl *wl);
 
 		//returns the number of elements in this wl
 		//(without the null at the end of items)
-		uint64_t length();
-		//sums up the byte size of the pointer array
-		//and the memlen() of the individual items
-		uint64_t memlen();
+		ulong length();
+		ulong hlen();
 	};
 
 	//Compares the two given byte arrays and returns 1 if they
 	//are equal and 0 if not
-	bool_t arrequ(uint8_t *arr1, uint8_t *arr2);
+	bool arrequ(byte *arr1, byte *arr2);
 
 	namespace io
 	{
 		//the last exception thrown by cwl io
-		ERROR_CODE last_exception = 0;
-
+		error last_exception = 0;
+		
 		//the header of cwld files
-		//(C W L D CR LF EOF LF)
-		uint8_t cwld_header[8] = { 67, 87, 76, 68, 13, 10, 26, 10 };
+		byte cwld_header[8] = { 'C', 'W', 'L', 'D', '\r', '\n', '\x1a', '\n' };
 
 		//tries to load the cwld from the file
 		//(returns 0 and saves the exception
