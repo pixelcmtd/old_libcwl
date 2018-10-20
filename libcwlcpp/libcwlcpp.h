@@ -6,9 +6,9 @@ Licensed to everybody under the terms of the GNU GPL v3, which you should
 have obtained this software with.
 
 This piece of software uses the library "libdeflate" by Eric Biggers.
-Here you can see a section from its "COPYING"/license agreement:
+Here you can see a section from its license agreement:
 
-***BEGIN OF COPYING***
+***QUOTE***
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation files
 (the "Software"), to deal in the Software without restriction,
@@ -19,7 +19,7 @@ subject to the following conditions:
 
 The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
-***END OF COPYING***
+***QUOTE END***
 */
 
 #pragma once
@@ -30,15 +30,23 @@ included in all copies or substantial portions of the Software.
 #include <wchar.h>
 #include <vector>
 #include "libdeflate.h"
+#include "unicode/ucnv.h"
 
 using namespace std;
 
-typedef int error;
+typedef long error;
 typedef unsigned char byte;
-typedef unsigned long int ulong;
+typedef unsigned long ulong;
 
 namespace libcwlcpp
 {
+	//the last exception thrown by libcwl
+	error last_exception = 0;
+
+	const error deflate_error = 0x1000000000000000;
+	const error unicode_error = 0x2000000000000000;
+	const error lzma_7z_error = 0x3000000000000000;
+
 	//the unnamed constant
 	const wchar_t *unnamed_item = L"/[unnamed item]\\";
 	//the tinyurl constant
@@ -51,14 +59,14 @@ namespace libcwlcpp
 	{
 	public:
 		//the name of the item (HAS to be zero-terminated)
-		wstring name;
+		std::wstring name;
 		//the url of the item, usually a tinyurl (HAS to be zero-terminated)
-		wstring url;
+		std::wstring url;
 
 		//constructs a new item with null name and url
 		item();
 		//constructs a new item with the given name and url
-		item(wstring name, wstring url);
+		item(std::wstring name, std::wstring url);
 
 		//returns the name if it is set, else unnamed_item
 		const wchar_t *to_string();
@@ -117,9 +125,6 @@ namespace libcwlcpp
 
 	namespace io
 	{
-		//the last exception thrown by cwl io
-		error last_exception = 0;
-		
 		//the header of cwld files
 		byte cwld_header[8] = { 'C', 'W', 'L', 'D', '\r', '\n', '\x1a', '\n' };
 
@@ -127,5 +132,7 @@ namespace libcwlcpp
 		//(returns 0 and saves the exception
 		//into last_exception if one occures)
 		wl *load_cwld(char *file);
+
+
 	}
 }

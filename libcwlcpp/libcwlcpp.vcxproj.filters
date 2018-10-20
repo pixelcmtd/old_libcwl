@@ -21,6 +21,555 @@
     <ClInclude Include="libdeflate.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="u\alphaindex.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\appendable.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\basictz.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\brkiter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\bytestream.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\bytestrie.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\bytestriebuilder.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\calendar.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\caniter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\casemap.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\char16ptr.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\chariter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\choicfmt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\coleitr.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\coll.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\compactdecimalformat.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\curramt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\currpinf.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\currunit.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\datefmt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\dbbi.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\dcfmtsym.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\decimfmt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\docmain.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\dtfmtsym.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\dtintrv.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\dtitvfmt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\dtitvinf.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\dtptngen.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\dtrule.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\edits.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\enumset.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\errorcode.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\fieldpos.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\filteredbrk.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\fmtable.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\format.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\fpositer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\gender.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\gregocal.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\icudataver.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\icuplug.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\idna.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\listformatter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\localpointer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\locdspnm.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\locid.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\measfmt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\measunit.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\measure.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\messagepattern.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\msgfmt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\normalizer2.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\normlzr.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\nounit.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\numberformatter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\numberrangeformatter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\numfmt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\numsys.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\parseerr.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\parsepos.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\platform.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\plurfmt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\plurrule.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ptypes.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\putil.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\rbbi.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\rbnf.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\rbtz.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\regex.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\region.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\reldatefmt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\rep.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\resbund.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\schriter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\scientificnumberformatter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\search.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\selfmt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\simpleformatter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\simpletz.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\smpdtfmt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\sortkey.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\std_string.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\strenum.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\stringoptions.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\stringpiece.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\stringtriebuilder.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\stsearch.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\symtable.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\tblcoll.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\timezone.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\tmunit.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\tmutamt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\tmutfmt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\translit.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\tzfmt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\tznames.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\tzrule.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\tztrans.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ubidi.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ubiditransform.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ubrk.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ucal.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ucasemap.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ucat.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uchar.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ucharstrie.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ucharstriebuilder.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uchriter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uclean.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ucnv.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ucnvsel.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ucnv_cb.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ucnv_err.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ucol.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ucoleitr.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uconfig.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ucpmap.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ucptrie.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ucsdet.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ucurr.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\udat.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\udata.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\udateintervalformat.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\udatpg.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\udisplaycontext.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uenum.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ufieldpositer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uformattable.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ugender.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uidna.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uiter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uldnames.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ulistformatter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uloc.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ulocdata.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\umachine.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\umisc.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\umsg.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\umutablecptrie.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\unifilt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\unifunct.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\unimatch.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\unirepl.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uniset.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\unistr.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\unorm.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\unorm2.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\unum.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\unumberformatter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\unumsys.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uobject.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\upluralrules.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uregex.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uregion.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ureldatefmt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\urename.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\urep.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ures.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uscript.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\usearch.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uset.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\usetiter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ushape.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uspoof.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\usprep.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ustdio.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ustream.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ustring.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\ustringtrie.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\utext.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\utf.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\utf16.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\utf32.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\utf8.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\utf_old.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\utmscale.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\utrace.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\utrans.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\utypes.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uvernum.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\uversion.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="u\vtzone.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="libcwlcpp.cpp">
