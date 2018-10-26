@@ -2,129 +2,97 @@
 License note of the libcwl-series of libraries, which provides utilities for
 the CWishlist, CWishlistBase, CWishlistUncde and CWishlistDeflate standards.
 (c) 2018 by Christian E. "chrissx" Häußler
-Licensed to everybody under the terms of the GNU GPL v3, which you should
+Licensed to everybody under the terms of the GNU GPLv3, which you should
 have obtained this software with.
 */
 
-use std::error:Error;
 use std::fs::File;
-use std::io::prelude::*;
+//use std::io::prelude::*;
 use std::path::Path;
 use std::vec::Vec;
 
-pub struct item
+pub struct item<'a>
 {
-	name: str,
-	url: str
+	name: &'a str,
+	url: &'a str
 }
 
-pub struct wl
+pub struct wl<'a>
 {
-	Vec<item> items
+	items: Vec<item<'a>>
 }
 
-impl item
+impl<'a> item<'a>
 {
-	pub fn new(str name, str url) -> Self
+	pub fn hash(&self) -> usize
 	{
-		item
+		let mut ns: usize = 0;
+		let mut us: usize = 0;
+		for c in self.name.as_bytes()
 		{
-			name: name,
-			url: url
+			ns += *c as usize;
 		}
-	}
-
-	pub fn new() -> Self
-	{
-		item
+		for c in self.url.as_bytes()
 		{
-			name: "",
-			url: ""
+			us += *c as usize;
 		}
+		self.name.len() * self.url.len() * ns * us
 	}
 
-	pub fn equals(&self, i: &item) -> bool
+	pub fn str(&self) -> &'a str
 	{
-		self.name == i.name && self.url == i.url;
-	}
-
-	pub fn hash(&self) -> i128
-	{
-		let nl: i128 = self.name.len();
-		let ul: i128 = self.url.len();
-		let mut ns: i128 = 0;
-		let mut us: i128 = 0;
-		for i in 0..nl
+		if self.name != ""
 		{
-			ns += self.name[i];
-		}
-		for i in 0..ul
-		{
-			us += self.url[i];
-		}
-		nl * ul * ns * us;
-	}
-
-	pub fn str(&self) -> str
-	{
-		self.name != "" ? self.name : "/[unnamed item]\\";
-	}
-	
-	pub fn len(&self) -> u64
-	{
-		self.name.len() + self.url.len();
-	}
-	
-	pub fn msz(&self) -> u64
-	{
-		len(i) * 2;
-	}
-}
-
-impl wl
-{
-	pub fn new(Vec<item> items) -> Self
-	{
-		wl
-		{
-			items: items
-		}
-	}
-
-	pub fn new() -> Self
-	{
-		wl
-		{
-			items: Vec<item>::new()
-		}
-	}
-
-	pub fn equals(&self, wl: &wl) -> bool
-	{
-		if self.items.len() != wl.items.len()
-		{
-			false;
+			self.name
 		}
 		else
 		{
-			for i in 0..self.items.len()
-			{
-				if self.items[i] != wl.items[i]
-				{
-					false;
-				}
-			}
-			true;
+			"/[unnamed item]\\"
 		}
+	}
+	
+	pub fn len(&self) -> usize
+	{
+		self.name.len() + self.url.len()
+	}
+	
+	pub fn msz(&self) -> usize
+	{
+		self.len() * 2
+	}
+
+	pub fn equals(&self, other: &item<'a>) -> bool
+	{
+		self.name == other.name && self.url == other.url
 	}
 }
 
-pub fn cwld_load(file: str) -> (wl, Error)
+impl<'a> wl<'a>
+{
+	pub fn equals(&self, wl: &wl<'a>) -> bool
+	{
+		if self.items.len() != wl.items.len()
+		{
+			return false;
+		}
+		for i in 0..self.items.len()
+		{
+			if !self.items[i].equals(&wl.items[i])
+			{
+				return false;
+			}
+		}
+		true
+	}
+}
+
+pub fn cwld_load<'a>(file: &str) -> wl<'a>
 {
 	let mut f = match File::open(&Path::new(file))
 	{
-		Err(err) => return err,
+		Err(_err) => return wl{items: Vec::new()},
 		Ok(file) => file
-	}
+	};
 	//deflatedecodestream, read
+	wl{items: Vec::new()}
 }

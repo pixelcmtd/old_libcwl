@@ -1,0 +1,9 @@
+D:\workspace_VS\libcwl\_build\libcwlcs.deps.json
+D:\workspace_VS\libcwl\_build\libcwlcs.dll
+D:\workspace_VS\libcwl\_build\libcwlcs.pdb
+D:\workspace_VS\libcwl\libcwlcs\obj\x64\Release\netcoreapp2.1\libcwlcs.csprojAssemblyReference.cache
+D:\workspace_VS\libcwl\libcwlcs\obj\x64\Release\netcoreapp2.1\libcwlcs.csproj.CoreCompileInputs.cache
+D:\workspace_VS\libcwl\libcwlcs\obj\x64\Release\netcoreapp2.1\libcwlcs.AssemblyInfoInputs.cache
+D:\workspace_VS\libcwl\libcwlcs\obj\x64\Release\netcoreapp2.1\libcwlcs.AssemblyInfo.cs
+D:\workspace_VS\libcwl\libcwlcs\obj\x64\Release\netcoreapp2.1\libcwlcs.dll
+D:\workspace_VS\libcwl\libcwlcs\obj\x64\Release\netcoreapp2.1\libcwlcs.pdb

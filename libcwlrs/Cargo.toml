@@ -1,6 +1,6 @@
 [package]
 name = "libcwlrs"
 version = "0.1.0"
-authors = ["chrissx <christian.chrissicx2004@freenet.de>"]
+authors = ["chrissx <chrissx@chrissx.ga>"]
 
 [dependencies]
