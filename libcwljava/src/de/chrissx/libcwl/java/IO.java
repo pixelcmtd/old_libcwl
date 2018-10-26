@@ -156,7 +156,7 @@ public class IO {
 	{
 		List<Item> items = new ArrayList<Item>();
 		for(String tag : xml.replaceAll("\r", "").replaceAll("\n", "").replaceAll("/>", "").replaceAll(">", "")
-				.replaceAll(nameAttribute + "=", nameAttribute).replaceAll(urlAttribute + "=", urlAttribute).split("<"))
+				.replaceAll(nameAttribute + "=", "n").replaceAll(urlAttribute + "=", "u").split("<"))
 		{
 			if(!tag.startsWith(itemTag))
 				continue;
