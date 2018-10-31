@@ -46,6 +46,13 @@ namespace libcwlcpp
 	#define deflate_error 0x1000000000000000
 	#define unicode_error 0x2000000000000000
 	#define lzma_7z_error 0x3000000000000000
+	#define badhead_error 0x4000000000000000
+	#define badvern_error 0x5000000000000000
+	#define iposibl_error 0x6000000000000000
+
+	#define mem_mod_ipos 1
+
+	#define is_error(val, err) val & err == err
 
 	//the unnamed constant
 	const wchar_t *unnamed_item = L"/[unnamed item]\\";
@@ -127,14 +134,16 @@ namespace libcwlcpp
 	{
 		//the header of cwld files
 		byte cwld_header[8] = {'C','W','L','D','\r','\n','\x1a','\n'};
+		byte cwll_header[4] = {'C','W','L','L'};
 
+		//tries to load the cwll from the file
+		//(returns 0 and saves the excpetion
+		//into last_exception if one occurs)
 		wl *load_cwll(char *file);
 
 		//tries to load the cwld from the file
 		//(returns 0 and saves the exception
-		//into last_exception if one occures)
+		//into last_exception if one occurs)
 		wl *load_cwld(char *file);
-
-		wl *load_cwlu(char *file);
 	}
 }

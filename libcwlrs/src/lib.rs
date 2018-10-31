@@ -96,3 +96,14 @@ pub fn cwld_load<'a>(file: &str) -> wl<'a>
 	//deflatedecodestream, read
 	wl{items: Vec::new()}
 }
+
+pub fn cwll_load<'a>(file: &str) -> wl<'a>
+{
+	let mut f = match File::open(&Path::new(file))
+	{
+		Err(_err) => return wl{items: Vec::new()},
+		Ok(file) => file
+	};
+	//decode lzma, read
+	wl{items: Vec::new()}
+}
