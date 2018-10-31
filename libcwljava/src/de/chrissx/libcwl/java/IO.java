@@ -14,6 +14,16 @@ import java.util.zip.ZipFile;
 
 public class IO {
 
+	static boolean arrequ(byte[] left, byte[] right)
+	{
+		if(left.length != right.length)
+			return false;
+		for(int i = 0; i < left.length; i++)
+			if(left[i] != right[i])
+				return false;
+		return true;
+	}
+
 	public static WL read(File f) throws IOException
 	{
 		String s = f.toString().toLowerCase();
@@ -21,8 +31,19 @@ public class IO {
 			return readCwlu(f);
 		else if(s.endsWith(".cwld"))
 			return readCwld(f);
+		else if(s.endsWith(".cwll"))
+			return readCwll(f);
 		else
-			throw new IOException("Only CWLU and CWLD loading are supported at the moment.");
+			throw new IOException("Only CWLU, CWLD and CWLL loading are supported at the moment.");
+	}
+
+	public static WL readCwll(File f)
+	{
+		FileInputStream s = new FileInputStream(f);
+		byte[] bfr = new byte[4];
+		s.read(bfr);
+		//decompress LZMA and decode
+		return null;
 	}
 
 	public static void writeCwld(WL wl, File f) throws IOException
@@ -45,7 +66,7 @@ public class IO {
 		FileInputStream s = new FileInputStream(f);
 		byte[] bfr = new byte[8];
 		s.read(bfr);
-		if(!clibj.arrequ(bfr, InternalConstsNUtils.cwld_header))
+		if(!arrequ(bfr, InternalConstsNUtils.cwld_header))
 		{
 			s.close();
 			throw new IOException("CWLD header does not match!");

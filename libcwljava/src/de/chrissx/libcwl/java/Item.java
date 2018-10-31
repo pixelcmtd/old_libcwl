@@ -53,6 +53,9 @@ public class Item {
 		return name.length() + url.length();
 	}
 
+	/**
+	 * the same as Item.length() but with 64-bit integers
+	 */
 	public long longLength()
 	{
 		return (long)name.length() + (long)url.length();
@@ -94,7 +97,18 @@ public class Item {
 		}
 		else if(format == "L1")
 		{
-			
+			s.write(InternalConstsNUtils.utf8(name));
+			if (url.StartsWith("http://tinyurl.com/"))
+			{
+			    s.write(11);
+			    s.write(InternalConstsNUtils.b64(url.Substring(19)));
+			}
+			else
+			{
+			    s.write(8);
+			    s.write(InternalConstsNUtils.utf8(url));
+			    s.write(11);
+			}
 		}
 	}
 }

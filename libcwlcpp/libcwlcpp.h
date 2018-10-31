@@ -1,7 +1,7 @@
 /*
 License note of the libcwl-series of libraries, which provides utilities for
 the CWishlist, CWishlistBase, CWishlistUncde and CWishlistDeflate standards.
-(c) 2018 by Christian E. "chrissx" Häußler
+(c) 2018 by Christian E. "chrissx" Hï¿½uï¿½ler
 Licensed to everybody under the terms of the GNU GPL v3, which you should
 have obtained this software with.
 
@@ -43,9 +43,9 @@ namespace libcwlcpp
 	//the last exception thrown by libcwl
 	error last_exception = 0;
 
-	const error deflate_error = 0x1000000000000000;
-	const error unicode_error = 0x2000000000000000;
-	const error lzma_7z_error = 0x3000000000000000;
+	#define deflate_error 0x1000000000000000
+	#define unicode_error 0x2000000000000000
+	#define lzma_7z_error 0x3000000000000000
 
 	//the unnamed constant
 	const wchar_t *unnamed_item = L"/[unnamed item]\\";
@@ -126,13 +126,15 @@ namespace libcwlcpp
 	namespace io
 	{
 		//the header of cwld files
-		byte cwld_header[8] = { 'C', 'W', 'L', 'D', '\r', '\n', '\x1a', '\n' };
+		byte cwld_header[8] = {'C','W','L','D','\r','\n','\x1a','\n'};
+
+		wl *load_cwll(char *file);
 
 		//tries to load the cwld from the file
 		//(returns 0 and saves the exception
 		//into last_exception if one occures)
 		wl *load_cwld(char *file);
 
-
+		wl *load_cwlu(char *file);
 	}
 }
