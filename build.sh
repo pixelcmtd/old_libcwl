@@ -1,3 +1,4 @@
+#!/bin/sh
 g++ -shared -fPIC libcwlcpp/libcwlcpp.cpp -s -o _build/libcwlcpp.so
 echo * Built libcwlcpp
 cd libcwlcs

@@ -23,7 +23,7 @@ included in all copies or substantial portions of the Software.
 */
 
 #pragma once
-#ifdef _WIN32
+#if defined(_WIN32) || defined(_WIN64)
 #define LIBDEFLATE_DLL
 #endif
 #include <string>
@@ -43,23 +43,28 @@ namespace libcwlcpp
 	//the last exception thrown by libcwl
 	error last_exception = 0;
 
-	#define deflate_error 0x1000000000000000
-	#define unicode_error 0x2000000000000000
-	#define lzma_7z_error 0x3000000000000000
-	#define badhead_error 0x4000000000000000
-	#define badvern_error 0x5000000000000000
-	#define iposibl_error 0x6000000000000000
+	#define deflate_error 0x1000000000000000 //error in libdeflate
+	#define unicode_error 0x2000000000000000 //error in unicode library
+	#define lzma_7z_error 0x3000000000000000 //error in lzma sdk
+	#define badhead_error 0x4000000000000000 //header not valid
+	#define badvern_error 0x5000000000000000 //version too new (or old)
+	#define iposibl_error 0x6000000000000000 //theoretical possibility
+											 //that's not possible w/o
+											 //memory corruption
 
-	#define mem_mod_ipos 1
+	//#define mem_mod_ipos 1
 
-	#define is_error(val, err) val & err == err
+	static inline bool is_error(error val, error err)
+	{
+		return val & err == err;
+	}
 
 	//the unnamed constant
 	const wchar_t *unnamed_item = L"/[unnamed item]\\";
 	//the tinyurl constant
 	const wchar_t *tinyurl = L"http://tinyurl.com/";
-	const wstring wnull = L"";
-	const ulong wclen = sizeof(wchar_t);
+	const std::wstring wnull = std::wstring(L"");
+	const size_t wclen = sizeof(wchar_t);
 
 	//one item in a cwl
 	struct item
@@ -76,25 +81,21 @@ namespace libcwlcpp
 		item(std::wstring name, std::wstring url);
 
 		//returns the name if it is set, else unnamed_item
-		const wchar_t *to_string();
+		const wchar_t *to_string() const noexcept;
 
 		//returns true if name and url are wcscmp equal, else false
-		bool equals(item &itm);
+		bool equals(item &itm) const noexcept;
 		//casts obj to an item ptr and compares with it, can lead to
 		//segmentation faults and other errors if obj is no item
-		bool equals(void *obj);
-
-		//returns a pretty unique checksum/hash, can be used for
-		//maps or smth like that
-		intmax_t hash_code();
+		bool equals(void *obj) const noexcept;
 
 		//compares the items, returns 1 if they are equal, 0 if not
-		bool operator==(item &itm);
+		bool operator==(item &itm) const noexcept;
 		//compares the items, returns 0 if they are equal, 1 if not
-		bool operator!=(item &itm);
+		bool operator!=(item &itm) const noexcept;
 		
 		//returns the added len of the name and url
-		ulong length();
+		ulong length() const noexcept;
 
 		//returns bytes of this item encoded in the given format
 		//formats: D1, D2; soon: L1
@@ -114,16 +115,16 @@ namespace libcwlcpp
 		wl(item **items);
 
 		//compares the wls and returns 1 if they are and 0 if not
-		bool operator==(wl *wl);
+		bool operator==(wl *wl) const noexcept;
 		//compares the wls and returns 0 if they are and 1 if not
-		bool operator!=(wl *wl);
+		bool operator!=(wl *wl) const noexcept;
 		//appends the wls and returns the new one
-		wl operator&(wl *wl);
+		wl operator&(wl *wl) const noexcept;
 
 		//returns the number of elements in this wl
 		//(without the null at the end of items)
-		ulong length();
-		ulong hlen();
+		ulong length() const noexcept;
+		ulong hlen() const noexcept;
 	};
 
 	//Compares the two given byte arrays and returns 1 if they
